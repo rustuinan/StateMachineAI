@@ -49,7 +49,6 @@ public class AIController : MonoBehaviour
 
         if (navMeshAgent.remainingDistance < 0.5f)
         {
-            // Bekleme süresi sona erdi mi, bir sonraki patrol noktasýna geç
             patrolTimer += Time.deltaTime;
             if (patrolTimer >= patrolWaitTime)
             {
@@ -58,7 +57,6 @@ public class AIController : MonoBehaviour
             }
         }
 
-        // Oyuncuyu kontrol et ve yakýnlýk kontrolü yap
         if (CanSeePlayer())
         {
             SetChaseState();
@@ -70,7 +68,6 @@ public class AIController : MonoBehaviour
         navMeshAgent.speed = chaseSpeed;
         navMeshAgent.SetDestination(player.position);
 
-        // Oyuncu uzaklaþtýðýnda veya kaybolduðunda Patrol durumuna geç
         if (!CanSeePlayer())
         {
             SetPatrolState();
