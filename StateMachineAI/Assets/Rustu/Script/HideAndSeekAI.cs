@@ -99,4 +99,15 @@ public class AIController : MonoBehaviour
     {
         currentState = AIState.Chase;
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
+            Application.Quit();
+        }
+    }
+
 }
